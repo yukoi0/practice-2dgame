@@ -94,7 +94,7 @@ public class Dragcontroller : MonoBehaviour
 
         rb.AddForce(-finalForce, ForceMode2D.Impulse);
     }
-    //hello obaidah
+    //hello obaidah this is another test
 
 }
 

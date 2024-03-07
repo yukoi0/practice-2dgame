@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.U2D;
 
@@ -17,7 +16,7 @@ public class Dragcontroller : MonoBehaviour
 
     Vector3 MousePosition
     {
-        get 
+        get
         {
             Vector3 pos = cam.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0f;
@@ -39,17 +38,17 @@ public class Dragcontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && !isDragging)
+        if (Input.GetMouseButtonDown(0) && !isDragging)
         {
             DragStart();
         }
 
-        if (isDragging) 
+        if (isDragging)
         {
             Drag();
         }
 
-        if (Input.GetMouseButtonUp(0) && isDragging) 
+        if (Input.GetMouseButtonUp(0) && isDragging)
         {
             DragEnd();
         }
@@ -64,21 +63,21 @@ public class Dragcontroller : MonoBehaviour
     }
     void Drag()
     {
-        Vector3 StartPos =Line.GetPosition(0);
+        Vector3 StartPos = Line.GetPosition(0);
         Vector3 currentPos = MousePosition;
         Vector3 distance = currentPos - StartPos;
         if (distance.magnitude <= draglimit)
         {
             Line.SetPosition(1, currentPos);
         }
-        else 
+        else
         {
             Vector3 limitVector = StartPos + (distance.normalized * draglimit);
             Line.SetPosition(1, limitVector);
         }
 
 
-       
+
     }
 
     void DragEnd()
@@ -94,7 +93,7 @@ public class Dragcontroller : MonoBehaviour
 
         rb.AddForce(-finalForce, ForceMode2D.Impulse);
     }
-    
+
 
 }
 
